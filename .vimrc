@@ -128,7 +128,7 @@ NeoBundle 'tomasr/molokai'                "カラースキーマ
 NeoBundle 'tyru/open-browser.vim'         "カーソル上のURLを表示
 NeoBundle 'rhysd/accelerated-jk'          "j/kによる移動を早くする
 "NeoBundle 'soramugi/auto-ctags.vim'       "閉じタグ自動補完
-NeoBundle 'tpope/vim-fugitive'            "git
+NeoBundle 'tpope/vim-fugitive'            "git 使い方 http://myenigma.hatenablog.com/entry/2016/07/10/084048
 NeoBundle 'thinca/vim-quickrun'           "ソースコードを実行
 set splitbelow
 set splitright
