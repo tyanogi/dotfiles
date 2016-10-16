@@ -128,11 +128,15 @@ NeoBundle 'tomasr/molokai'                "カラースキーマ
 NeoBundle 'tyru/open-browser.vim'         "カーソル上のURLを表示
 NeoBundle 'rhysd/accelerated-jk'          "j/kによる移動を早くする
 "NeoBundle 'soramugi/auto-ctags.vim'       "閉じタグ自動補完
+NeoBundle 'tpope/vim-surround'            "タグの挿入 http://vimblog.hatenablog.com/entry/vim_plugin_surround_vim
 NeoBundle 'tpope/vim-fugitive'            "git 使い方 http://myenigma.hatenablog.com/entry/2016/07/10/084048
+NeoBundle 'taichouchou2/html5.vim'        "html5のシンタックス
+NeoBundle 'taichouchou2/vim-javascript'   "jsのシンタックス
+NeoBundle 'hail2u/vim-css3-syntax'        "css3のシンタックス
 NeoBundle 'thinca/vim-quickrun'           "ソースコードを実行
 set splitbelow
 set splitright
-NeoBundle 'Shougo/neosnippet'             "スニペット機能
+NeoBundle 'Shougo/neosnippet'             "スニペット機能 http://promamo.com/?p=1944
 " Plugin key-mappings.
  imap <C-k>     <Plug>(neosnippet_expand_or_jump)
  smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -151,7 +155,7 @@ NeoBundle 'Shougo/neosnippet'             "スニペット機能
       set conceallevel=2 concealcursor=i
    endif
 
-NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'Shougo/neosnippet-snippets'    "補完可能な単語が登録された辞書
 
 call neobundle#end()
 filetype plugin indent on       " restore filetype
