@@ -1,3 +1,8 @@
+"Encoding
+set encoding=utf-8
+scriptencoding utf-8
+
+
 "View ------------------------------------------------
 set number                       "行番号
 set showmatch                    "括弧の対応をハイライト
@@ -75,6 +80,18 @@ vmap <Leader>b <Plug>(openbrowser-smart-search)
 "j/kによる移動を早くする
 nmap j <Plug>(accelerated_jk_gj)
 nmap k <Plug>(accelerated_jk_gk)
+
+
+"noramlモード時に自動英数入力変換
+if executable('osascript')
+  let s:keycode_jis_eisuu = 102
+  let g:force_alphanumeric_input_command = "osascript -e 'tell application \"System Events\" to key code " . s:keycode_jis_eisuu . "' &"
+
+  inoremap <silent> <Esc> <Esc>:call system(g:force_alphanumeric_input_command)<CR>
+
+  autocmd! FocusGained *
+    \ call system(g:force_alphanumeric_input_command)
+endif
 
 
 "Pacage Control --------------------------------------
