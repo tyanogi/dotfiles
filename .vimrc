@@ -11,7 +11,7 @@ set list lcs=tab:\|\ ,eol:↲      " 不可視文字表示
 set laststatus=2
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ \[ENC=%{&fileencoding}]%P
 set cursorline                   "カーソル行をハイライト
-syntax on
+syntax enable
 colorscheme molokai
 
 " 全角スペースをハイライト表示
@@ -142,6 +142,7 @@ NeoBundle 'itchyny/lightline.vim'         "ステータスライン
 NeoBundle 'Yggdroot/indentLine'           "インデント
 NeoBundle 'jiangmiao/auto-pairs'          "括弧対応入力
 NeoBundle 'tomasr/molokai'                "カラースキーマ
+NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'tyru/open-browser.vim'         "カーソル上のURLを表示
 NeoBundle 'rhysd/accelerated-jk'          "j/kによる移動を早くする
 "NeoBundle 'soramugi/auto-ctags.vim'       "閉じタグ自動補完
