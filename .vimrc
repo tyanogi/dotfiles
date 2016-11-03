@@ -108,6 +108,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " NeoBundle で管理するプラグインを追加します。
 NeoBundle 'Shougo/vimshell.vim'
+let g:vimshell_prompt_expr = 'getcwd()." > "'
+let g:vimshell_prompt_pattern = '^\f\+ > '
 NeoBundle 'Shougo/vimproc.vim', {
 \ 'build' : {
 \     'windows' : 'tools\\update-dll-mingw',
