@@ -107,16 +107,16 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " ここから NeoBundle でプラグインを設定します
 
 " NeoBundle で管理するプラグインを追加します。
-NeoBundle 'Shougo/vimshell.vim', {
-\'build' : {
-\    'windows' : 'tools\\update-dll-mingw',
-\    'cygwin' : 'make -f make_cygwin.mak',
-\    'mac' : 'make -f make_mac.mak',
-\    'linux' : 'make',
-\    'unix' : 'gmake',
-\   },
-\}
-NeoBundle 'Shougo/vimproc.vim'
+NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make -f make_mac.mak',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
 NeoBundle 'Shougo/unite.vim'              "ファイル表示
 NeoBundle 'Shougo/neomru.vim'             "Unite.vimで最近使ったファイルを表示>できるようにする
 NeoBundle 'scrooloose/nerdtree'           "ツリー型でファイルを表示 
