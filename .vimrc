@@ -51,7 +51,13 @@ set ignorecase                   "大文字小文字無視
 set smartcase                    "大文字ではじめたら大文字小文字無視しない
 
 
+" swapファイルを作成しない
 set noswapfile
+" ビジュアルモードで選択したテキストが、クリップボードに入るようにする
+set clipboard=autoselect
+" 無名レジスタに入るデータを、*レジスタにも入れる。
+set clipboard+=unnamed
+set clipboard=unnamedplus
 
 
 "SortCat
@@ -61,10 +67,12 @@ nnoremap sj <C-w>j
 nnoremap sk <C-w>k
 nnoremap sl <C-w>l
 nnoremap sh <C-w>h
+nnoremap sx <C-w>x
 nnoremap sJ <C-w>J
 nnoremap sK <C-w>K
 nnoremap sL <C-w>L
 nnoremap sH <C-w>H
+nnoremap sX <C-w>X
 nnoremap s= <C-w>=
 nnoremap s> <C-w>>
 nnoremap s< <C-w><
