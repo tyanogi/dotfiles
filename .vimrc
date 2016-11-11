@@ -177,6 +177,7 @@ NeoBundle 'tpope/vim-fugitive'            "git 使い方 http://myenigma.hatenab
 "NeoBundle 'taichouchou2/html5.vim'        "html5のシンタックス
 NeoBundle 'taichouchou2/vim-javascript'   "jsのシンタックス
 NeoBundle 'hail2u/vim-css3-syntax'        "css3のシンタックス
+NeoBundle 'fatih/vim-go'                  "goの開発環境
 NeoBundle 'thinca/vim-quickrun'           "ソースコードを実行
 set splitbelow
 set splitright
