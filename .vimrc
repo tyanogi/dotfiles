@@ -160,41 +160,21 @@ call dein#add('jistr/vim-nerdtree-tabs')       "タブ間ツリー表示
 if argc() == 0
     let g:nerdtree_tabs_open_on_console_startup = 1
 end
-call dein#add('Shougo/neocomplcache')          "補完
-call dein#add('itchyny/lightline.vim')         "ステータスライン
-call dein#add('Yggdroot/indentLine')           "インデント
-call dein#add('jiangmiao/auto-pairs')          "括弧対応入力
-call dein#add('tomasr/molokai')                "カラースキーマ
-call dein#add('altercation/vim-colors-solarized')
-call dein#add('tyru/open-browser.vim')         "カーソル上のURLを表示
-call dein#add('rhysd/accelerated-jk')          " j/kによる移動を早くする
-"call dein#add('soramugi/auto-ctags.vim')       "閉じタグ自動補完
-call dein#add('tpope/vim-surround')            "タグの挿入 http://vimblog.hatenablog.com/entry/vim_plugin_surround_vim
-call dein#add('tpope/vim-fugitive')            "git 使い方 http://myenigma.hatenablog.com/entry/2016/07/10/084048
-"call dein#add('taichouchou2/html5.vim')        "html5のシンタックス
-call dein#add('taichouchou2/vim-javascript')   "jsのシンタックス
-call dein#add('hail2u/vim-css3-syntax')        "css3のシンタックス
-call dein#add('fatih/vim-go')                  "goの開発環境 https://github.com/fatih/vim-go
-"goのインデントはハードタブ推奨
-autocmd FileType go setlocal noexpandtab tabstop=4 shiftwidth=4
-" go runのキーマッピング
-au FileType go nmap gr (go-run)
-" vim-goの設定
-"let g:go_fmt_autosave = 1
-let g:go_fmt_fail_silently = 1
-" GoFmt時にインポートするパッケージを整理(GoFmtはファイル書き込み時に自動的に実行される)
-let g:go_fmt_command = "goimports"
-" Highlight
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_interfaces = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-" Sysntastic
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-call dein#add('thinca/vim-quickrun')           "ソースコードを実行
+NeoBundle 'Shougo/neocomplcache'          "補完
+NeoBundle 'itchyny/lightline.vim'         "ステータスライン
+NeoBundle 'Yggdroot/indentLine'           "インデント
+NeoBundle 'jiangmiao/auto-pairs'          "括弧対応入力
+NeoBundle 'tomasr/molokai'                "カラースキーマ
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'tyru/open-browser.vim'         "カーソル上のURLを表示
+NeoBundle 'rhysd/accelerated-jk'          " j/kによる移動を早くする
+"NeoBundle 'soramugi/auto-ctags.vim'       "閉じタグ自動補完
+NeoBundle 'tpope/vim-surround'            "タグの挿入 http://vimblog.hatenablog.com/entry/vim_plugin_surround_vim
+NeoBundle 'tpope/vim-fugitive'            "git 使い方 http://myenigma.hatenablog.com/entry/2016/07/10/084048
+"NeoBundle 'taichouchou2/html5.vim'        "html5のシンタックス
+NeoBundle 'taichouchou2/vim-javascript'   "jsのシンタックス
+NeoBundle 'hail2u/vim-css3-syntax'        "css3のシンタックス
+NeoBundle 'thinca/vim-quickrun'           "ソースコードを実行
 set splitbelow
 set splitright
 call dein#add('Shougo/neosnippet')            "スニペット機能 http://promamo.com/?p=1944

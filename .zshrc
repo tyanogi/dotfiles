@@ -67,9 +67,6 @@ alias ....='cd ../../..'
 # タイプミス
 alias vikm='vim'
 
-alias setp='source ~/.set_proxy.sh'
-alias unsetp='source ~/.unset_proxy.sh'
-
 # ディレクトリに色をつける
 autoload -U compinit
 compinit
@@ -81,7 +78,4 @@ alias ls="ls -GF"
 alias gls="gls --color"
 
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
-
-export GOPATH=/home/tyanogi/go
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/tyanogi/go/bin:/usr/local/go/bin
 
