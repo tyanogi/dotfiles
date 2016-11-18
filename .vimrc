@@ -109,19 +109,22 @@ endif
 
 
 "Pacage Control --------------------------------------
-if &compatible
-  set nocompatible
+set nocompatible
+filetype off            " for NeoBundle
+
+if has('vim_starting')
+        set rtp+=$HOME/.vim/bundle/neobundle.vim/
 endif
-set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+call neobundle#begin(expand('~/.vim/bundle'))
+NeoBundleFetch 'Shougo/neobundle.vim'
 
-call dein#begin(expand('~/.vim/dein'))
+" ここから NeoBundle でプラグインを設定します
 
-call dein#add('Shougo/dein.vim')
-
-call dein#add('Shougo/vimshell.vim')
+" NeoBundle で管理するプラグインを追加します。
+NeoBundle 'Shougo/vimshell.vim'
 let g:vimshell_prompt_expr = 'getcwd()." > "'
 let g:vimshell_prompt_pattern = '^\f\+ > '
-call dein#add('Shougo/vimproc.vim', {
+NeoBundle 'Shougo/vimproc.vim', {
 \ 'build' : {
 \     'windows' : 'tools\\update-dll-mingw',
 \     'cygwin' : 'make -f make_cygwin.mak',
@@ -129,11 +132,11 @@ call dein#add('Shougo/vimproc.vim', {
 \     'linux' : 'make',
 \     'unix' : 'gmake',
 \    },
-\ })
-call dein#add('Shougo/unite.vim')              "ファイル表示
-call dein#add('Shougo/neomru.vim')             "Unite.vimで最近使ったファイルを表示>できるようにする
-call dein#add('scrooloose/nerdtree')           "ツリー型でファイルを表示 
-call dein#add('Xuyuanp/nerdtree-git-plugin')   "ファイルの変更を表示 nerdtree
+\ }
+NeoBundle 'Shougo/unite.vim'              "ファイル表示
+NeoBundle 'Shougo/neomru.vim'             "Unite.vimで最近使ったファイルを表示>できるようにする
+NeoBundle 'scrooloose/nerdtree'           "ツリー型でファイルを表示 
+NeoBundle 'Xuyuanp/nerdtree-git-plugin'   "ファイルの変更を表示 nerdtree
 " NERDTress File highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
  exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
@@ -155,8 +158,8 @@ call NERDTreeHighlightFile('php',    'Magenta', 'none', '#ff00ff', '#151515')
 let g:NERDTreeDirArrows = 1
 let g:NERDTreeDirArrowExpandable  = '▶'
 let g:NERDTreeDirArrowCollapsible = '▼'
-call dein#add('airblade/vim-gitgutter')        "ファイルの変更を表示
-call dein#add('jistr/vim-nerdtree-tabs')       "タブ間ツリー表示
+NeoBundle 'airblade/vim-gitgutter'        "ファイルの変更を表示
+NeoBundle 'jistr/vim-nerdtree-tabs'       "タブ間ツリー表示
 if argc() == 0
     let g:nerdtree_tabs_open_on_console_startup = 1
 end
@@ -174,10 +177,11 @@ NeoBundle 'tpope/vim-fugitive'            "git 使い方 http://myenigma.hatenab
 "NeoBundle 'taichouchou2/html5.vim'        "html5のシンタックス
 NeoBundle 'taichouchou2/vim-javascript'   "jsのシンタックス
 NeoBundle 'hail2u/vim-css3-syntax'        "css3のシンタックス
+NeoBundle 'fatih/vim-go'
 NeoBundle 'thinca/vim-quickrun'           "ソースコードを実行
 set splitbelow
 set splitright
-call dein#add('Shougo/neosnippet')            "スニペット機能 http://promamo.com/?p=1944
+NeoBundle 'Shougo/neosnippet'             "スニペット機能 http://promamo.com/?p=1944
 " Plugin key-mappings.
  imap <C-k>     <Plug>(neosnippet_expand_or_jump)
  smap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -196,9 +200,8 @@ call dein#add('Shougo/neosnippet')            "スニペット機能 http://prom
       set conceallevel=2 concealcursor=i
    endif
 
-call dein#add('Shougo/neosnippet-snippets')    "補完可能な単語が登録された辞書
+NeoBundle 'Shougo/neosnippet-snippets'    "補完可能な単語が登録された辞書
 
-call dein#end()
-
-syntax on
+call neobundle#end()
+filetype plugin indent on       " restore filetype
 
