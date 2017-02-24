@@ -57,7 +57,9 @@ set noswapfile
 set clipboard=autoselect
 " 無名レジスタに入るデータを、*レジスタにも入れる。
 set clipboard+=unnamed
-set clipboard=unnamedplus
+" linuxの場合必要
+"set clipboard=unnamedplus
+set backspace=indent,eol,start
 
 
 "SortCat
