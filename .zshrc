@@ -82,5 +82,6 @@ zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'c
 
 disable r
 
+export PATH=$PATH:~/.composer/vendor/bin
 #export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
 

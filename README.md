@@ -1,5 +1,7 @@
-# dotfiles
+# deinのtest
 
-dotfilesLink.shはホームディレクトリにシンボリックリンクを貼る</br>
-###実行方法
+### 実行方法
+ホームディレクトリにシンボリックリンクを貼る</br>
+```
 sh dotfilesLink.sh
+```
