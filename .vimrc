@@ -172,11 +172,13 @@ vmap ob <Plug>(openbrowser-smart-search)
 call dein#add('rhysd/accelerated-jk')          "j/kによる移動を早くする
 call dein#add('tpope/vim-surround')            "タグの挿入 http://vimblog.hatenablog.com/entry/vim_plugin_surround_vim
 call dein#add('tpope/vim-fugitive')            "git 使い方 http://myenigma.hatenablog.com/entry/2016/07/10/084048
+call dein#add('vim-pandoc/vim-pandoc')
 call dein#add("thinca/vim-quickrun")
 set splitbelow
 set splitright
 
 "Python関係
+" 補完, リファクタリング
 call dein#add("davidhalter/jedi-vim", {
       \ "autoload": {
       \   "filetypes": ["python", "python3", "djangohtml"],
