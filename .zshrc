@@ -30,9 +30,24 @@ function zle-line-init zle-keymap-select {
 #    esac
 #    zle reset-prompt
 }
+
+# vcs_infoロード    
+autoload -Uz vcs_info    
+# PROMPT変数内で変数参照する    
+setopt prompt_subst    
+
+# vcsの表示    
+zstyle ':vcs_info:*' formats '%s][* %F{green}%b%f'    
+zstyle ':vcs_info:*' actionformats '%s][* %F{green}%b%f(%F{red}%a%f)'    
+# プロンプト表示直前にvcs_info呼び出し    
+precmd() { vcs_info }    
+# プロンプト表示    
+PROMPT='%n@%m[${vcs_info_msg_0_}]:%~%f$VIMODE\$ '   
+
 #RPS1="%n@%m ${VIMODE} \\$ "
-RPS1="%n@%m:%~$VIMODE\$ "
-PROMPT=$RPS1
+#RPS1="%n@%m:%~$VIMODE\$ "
+#RPS1="%n@%m[${vcs_info_msg_0_}]:%~$VIMODE\$ "
+#PROMPT=$RPS1
 zle -N zle-line-init
 zle -N zle-keymap-select
 
