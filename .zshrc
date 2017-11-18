@@ -82,6 +82,11 @@ alias ....='cd ../../..'
 # タイプミス
 alias vikm='vim'
 
+# 研究室Ruter
+alias ssh-labrouter='ssh tyanogi@202.13.171.204'
+# 研究室Server
+alias ssh-labserver='ssh -X nakalab@192.168.1.4'
+
 # ディレクトリに色をつける
 autoload -U compinit
 compinit
@@ -98,5 +103,9 @@ zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'c
 disable r
 
 export PATH=$PATH:~/.composer/vendor/bin
-#export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+export PATH=/opt/local/bin:$PATH
+
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+eval "$(pyenv init -)"
 
