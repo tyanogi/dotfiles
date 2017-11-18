@@ -95,6 +95,7 @@ vmap <Leader>b <Plug>(openbrowser-smart-search)
 nmap j <Plug>(accelerated_jk_gj)
 nmap k <Plug>(accelerated_jk_gk)
 
+au BufRead,BufNewFile *.md set filetype=markdown
 
 "noramlモード時に自動英数入力変換
 if executable('osascript')
@@ -172,7 +173,7 @@ vmap ob <Plug>(openbrowser-smart-search)
 call dein#add('rhysd/accelerated-jk')          "j/kによる移動を早くする
 call dein#add('tpope/vim-surround')            "タグの挿入 http://vimblog.hatenablog.com/entry/vim_plugin_surround_vim
 call dein#add('tpope/vim-fugitive')            "git 使い方 http://myenigma.hatenablog.com/entry/2016/07/10/084048
-call dein#add('vim-pandoc/vim-pandoc')
+"call dein#add('vim-pandoc/vim-pandoc')
 call dein#add("thinca/vim-quickrun")
 set splitbelow
 set splitright
@@ -188,6 +189,9 @@ call dein#add("davidhalter/jedi-vim", {
       \   "unix": "pip3 install jedi",
       \ }})
 let g:jedi#rename_command = '<Leader>R'
+
+call dein#add('plasticboy/vim-markdown')
+call dein#add('kannokanno/previm')
 
 "-----------------------------------------------------
 call dein#end()

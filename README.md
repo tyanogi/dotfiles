@@ -4,4 +4,4 @@ dotfilesLink.shはホームディレクトリにシンボリックリンクを�
 sh dotfilesLink.sh
 ```
 
-## vimrc(deinのtest)
+## vimrc(dein)
