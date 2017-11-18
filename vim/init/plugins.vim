@@ -32,6 +32,8 @@ call dein#add('rhysd/accelerated-jk')          "j/kによる移動を早くす�
 call dein#add('tpope/vim-surround')            "タグの挿入 http://vimblog.hatenablog.com/entry/vim_plugin_surround_vim
 call dein#add('tpope/vim-fugitive')            "git 使い方 http://myenigma.hatenablog.com/entry/2016/07/10/084048
 call dein#add("thinca/vim-quickrun")
+call dein#add('plasticboy/vim-markdown')
+call dein#add('kannokanno/previm')
 
 "Python関係
 call dein#add("davidhalter/jedi-vim", {
