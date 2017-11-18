@@ -87,6 +87,7 @@ nnoremap uf :<C-u>Unite file<CR>
 nnoremap ur :<C-u>Unite file_mru<CR>
 nnoremap nt :<C-u>NERDTree<CR>
 nnoremap vs :<C-u>VimShell<CR>
+nnoremap po :<C-u>PrevimOpen<CR>
 "map nt :NERDTreeToggle<CR>
 "カーソル下のURLをブラウザで開く
 nmap <Leader>b <Plug>(openbrowser-smart-search)
