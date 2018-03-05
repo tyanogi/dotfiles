@@ -36,5 +36,5 @@ set clipboard+=unnamed           " 無名レジスタに入るデータを、*�
 "set clipboard=unnamedplus
 set backspace=indent,eol,start
 
-au BufRead,BufNewFile *.md set filetype=markdown "ファイルタイプの設定
+"au BufRead,BufNewFile *.md set filetype=markdown "ファイルタイプの設定
 
