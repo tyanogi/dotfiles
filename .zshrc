@@ -98,11 +98,6 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 # タイプミス
 alias vikm='vim'
-# 研究室Ruter
-#alias ssh-labrouter='ssh tyanogi@202.13.171.204'
-alias ssh-labrouter='ssh tyanogi@202.13.168.81'
-# 研究室Server
-alias ssh-labserver='ssh nakalab@192.168.1.200'
 # ディレクトリに色をつける
 autoload -U compinit
 compinit
@@ -117,17 +112,5 @@ zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'c
 
 disable r
 
-export PATH=$PATH:~/.composer/vendor/bin
-export PATH=/opt/local/bin:$PATH
-
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-export PATH="/usr/local/bin:$PATH"
-
-## Set path for pyenv
-export PYENV_ROOT="${HOME}/.pyenv"
-if [ -d "${PYENV_ROOT}" ]; then
-    export PATH=${PYENV_ROOT}/bin:$PATH
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-fi
+source ~/dotfiles/dev_env.zsh
 
