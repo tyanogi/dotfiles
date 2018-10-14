@@ -26,7 +26,8 @@ nnoremap ur :<C-u>Unite file_mru<CR>
 nnoremap nt :<C-u>NERDTree<CR>
 nnoremap vs :<C-u>VimShell<CR>
 nnoremap po :<C-u>PrevimOpen<CR>
-"map nt :NERDTreeToggle<CR>
+nnoremap <C-h> :vsp<CR> :exe("tjump ".expand('<cword>'))<CR>
+nnoremap <C-k> :split<CR> :exe("tjump ".expand('<cword>'))<CR>"map nt :NERDTreeToggle<CR>
 "カーソル下のURLをブラウザで開く
 nmap <Leader>b <Plug>(openbrowser-smart-search)
 vmap <Leader>b <Plug>(openbrowser-smart-search)

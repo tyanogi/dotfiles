@@ -35,7 +35,10 @@ call dein#add("thinca/vim-quickrun")
 call dein#add('plasticboy/vim-markdown')       "Markdownのシンタックス
 call dein#add('kannokanno/previm')
 call dein#add('lervag/vimtex')
-
+call dein#add('derekwyatt/vim-scala')          "scalaのシンタックス
+call dein#add('momota/cisco.vim')
+call dein#add('gre/play2vim')                  "scala.html，application.confなどをシンタックスできるように
+"
 "Python関係
 call dein#add("davidhalter/jedi-vim", {
       \ "autoload": {
