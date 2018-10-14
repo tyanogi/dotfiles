@@ -1,3 +1,5 @@
+set shell=/bin/bash
+"
 "Encoding
 set encoding=utf-8
 scriptencoding utf-8
@@ -11,7 +13,7 @@ set laststatus=2
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ \[ENC=%{&fileencoding}]%P
 set cursorline                   "カーソル行をハイライト
 set splitbelow                   "新しいウインドウを下に開く
-set splitright                   "新しいウインドウを右に開く 
+set splitright                   "新しいウインドウを右に開く
 
 "Indent ----------------------------------------------
 "" タブ設定
@@ -35,6 +37,6 @@ set clipboard+=unnamed           " 無名レジスタに入るデータを、*�
 " linuxの場合必要
 "set clipboard=unnamedplus
 set backspace=indent,eol,start
+set tags+=~/.tags                " ctagsの設定
 
 "au BufRead,BufNewFile *.md set filetype=markdown "ファイルタイプの設定
-
