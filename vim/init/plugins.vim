@@ -30,7 +30,7 @@ call dein#add('tomasr/molokai')                "カラースキーマ
 call dein#add('tyru/open-browser.vim')         "カーソル上のURLを表示
 call dein#add('rhysd/accelerated-jk')          "j/kによる移動を早くする
 call dein#add('tpope/vim-surround')            "タグの挿入 http://vimblog.hatenablog.com/entry/vim_plugin_surround_vim
-call dein#add('tpope/vim-fugitive')            "git 使い方 http://myenigma.hatenablog.com/entry/2016/07/10/084048
+"call dein#add('tpope/vim-fugitive')            "git 使い方 http://myenigma.hatenablog.com/entry/2016/07/10/084048
 call dein#add("thinca/vim-quickrun")
 call dein#add('plasticboy/vim-markdown')       "Markdownのシンタックス
 call dein#add('kannokanno/previm')
