@@ -30,8 +30,10 @@ bindkey -a '^J' vi-forward-word
 # zshプロンプトにモード表示
 # 設定1
 function zle-line-init zle-keymap-select {
-    VIM_NORMAL="%K{148}%F{black}⮀%k%f%K{148}%F{green} % NORMAL %k%f%K{black}%F{148}⮀%k%f"
-    VIM_INSERT="%K{027}%F{black}⮀%k%f%K{027}%F{white} % INSERT %k%f%K{black}%F{027}⮀%k%f"
+    #VIM_NORMAL="%K{148}%F{black}⮀%k%f%K{148}%F{green} % NORMAL %k%f%K{black}%F{148}⮀%k%f"
+    #VIM_INSERT="%K{027}%F{black}⮀%k%f%K{027}%F{white} % INSERT %k%f%K{black}%F{027}⮀%k%f"
+    VIM_NORMAL="%K{148}%F{green}--%k%f%K{148}%F{green} % NORMAL --%k%f"
+    VIM_INSERT="%K{027}%F{white}--%k%f%K{027}%F{white} % INSERT --%k%f"
     RPS1="${${KEYMAP/vicmd/$VIM_NORMAL}/(main|viins)/$VIM_INSERT}"
     zle reset-prompt
 }
