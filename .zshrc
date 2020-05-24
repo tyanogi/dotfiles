@@ -30,8 +30,6 @@ bindkey -a '^J' vi-forward-word
 # zshプロンプトにモード表示
 # 設定1
 function zle-line-init zle-keymap-select {
-    #VIM_NORMAL="%K{148}%F{black}⮀%k%f%K{148}%F{green} % NORMAL %k%f%K{black}%F{148}⮀%k%f"
-    #VIM_INSERT="%K{027}%F{black}⮀%k%f%K{027}%F{white} % INSERT %k%f%K{black}%F{027}⮀%k%f"
     VIM_NORMAL="%K{148}%F{green}--%k%f%K{148}%F{green} % NORMAL --%k%f"
     VIM_INSERT="%K{027}%F{white}--%k%f%K{027}%F{white} % INSERT --%k%f"
     RPS1="${${KEYMAP/vicmd/$VIM_NORMAL}/(main|viins)/$VIM_INSERT}"
@@ -48,16 +46,12 @@ zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
 zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
 zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
-#zstyle ':vcs_info:*' formats '%s][* %F{green}%b%f'    
-#zstyle ':vcs_info:*' actionformats '%s][* %F{green}%b%f(%F{red}%a%f)'    
 # プロンプト表示直前にvcs_info呼び出し    
 precmd() { vcs_info }    
 # プロンプト表示    
-#local p_cdir='%{$fg[blue]%}%n%{$reset_color%}%{$fg[magenta]%}@%{$reset_color%}%{$fg[blue]%}%m%{$reset_color%}[${vcs_info_msg_0_}]:%{$fg[green]%}%~%f%{$reset_color%}$VIMODE '$'\n'
 local p_cdir='%{$fg[blue]%}%n%{$reset_color%}%{$fg[magenta]%}@%{$reset_color%}%{$fg[blue]%}%m%{$reset_color%}${vcs_info_msg_0_}:%{$fg[green]%}%~%f%{$reset_color%}$VIMODE '$'\n'
 local p_info="%{$fg[magenta]%}>> %{$reset_color%}"
 
-#PROMPT="%n@%m[${vcs_info_msg_0_}]:%~%f$VIMODE\$ "
 PROMPT="$p_cdir$p_info"
 RPS1="${${KEYMAP/vicmd/$VIM_NORMAL}/(main|viins)/$VIM_INSERT}"
 
@@ -113,6 +107,26 @@ alias gls="gls --color"
 zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 
 disable r
+
+# timuxの自動起動
+PERCOL=fzf
+if [[ ! -n $TMUX && $- == *l* ]]; then
+  # get the IDs
+  ID="`tmux list-sessions`"
+  if [[ -z "$ID" ]]; then
+    tmux new-session
+  fi
+  create_new_session="Create New Session"
+  ID="$ID\n${create_new_session}:"
+  ID="`echo $ID | $PERCOL | cut -d: -f1`"
+  if [[ "$ID" = "${create_new_session}" ]]; then
+    tmux new-session
+  elif [[ -n "$ID" ]]; then
+    tmux attach-session -t "$ID"
+  else
+    :  # Start terminal normally
+  fi
+fi
 
 source ~/dotfiles/dev_env.zsh
 
