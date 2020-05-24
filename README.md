@@ -1,8 +1,16 @@
 ## 実行方法
-dotfilesLink.shはホームディレクトリにシンボリックリンクを貼る</br>
+1. dein-vimをインストールする
+2. fira fontをインストールする
 ```
-sh dotfilesLink.sh
+brew tap homebrew/cask-fonts
+brew cask install font-fira-code
 ```
+iterm2でfontをfiraに設定する
+3. makeでホームディレクトリにシンボリックリンクを貼る</br>
+```
+make all
+```
+
 
 ## vimrc(dein)
 ### 構造
