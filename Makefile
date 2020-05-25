@@ -1,6 +1,7 @@
 DOTPATH=~/dotfiles
 
-all: install zshrc vimrc tmux.conf
+all: app-install zshrc vimrc tmux.conf
+min: app-install zshrc tmux.conf
 zshrc: dev_env
 	ln -sf $(DOTPATH)/.zshrc ~/.zshrc
 dev_env:
