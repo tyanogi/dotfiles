@@ -1,6 +1,7 @@
 DOTPATH=~/dotfiles
 
-all: zshrc vimrc tmux.conf
+all: app-install zshrc vimrc tmux.conf
+min: app-install zshrc tmux.conf
 zshrc: dev_env
 	ln -sf $(DOTPATH)/.zshrc ~/.zshrc
 dev_env:
@@ -13,3 +14,18 @@ tmux.conf:
 
 clean:
 	rm ~/.zshrc ~/.vimrc ~/.vimshrc ~/.tmux.conf
+
+app-install:
+ifeq ($(shell uname -a | grep -o Ubuntu),Ubuntu)
+	echo "Ubuntu"
+	sudo apt update
+	sudo apt install -y vim-gtk tmux zsh git
+	sed -i 's/.*default-shell/#&/g' $(DOTPATH)/.tmux.conf
+	chsh -s $(shell which zsh)
+endif
+ifeq ($(shell uname),Darwin)
+	echo "Mac"
+else
+	echo "other"
+endif
+

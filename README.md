@@ -1,16 +1,5 @@
 ## 実行方法
-1. dein-vimをインストールする
-2. fira fontをインストールする
-```
-brew tap homebrew/cask-fonts
-brew cask install font-fira-code
-```
-iterm2でfontをfiraに設定する
-3. makeでホームディレクトリにシンボリックリンクを貼る</br>
-```
-make all
-```
-
+curl -L raw.github.com/tyanogi/dotfiles/master/install.sh | bash
 
 ## vimrc(dein)
 ### 構造
