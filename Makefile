@@ -12,20 +12,9 @@ vimrc:
 tmux.conf:
 	ln -sf $(DOTPATH)/.tmux.conf ~/.tmux.conf
 
-clean:
+lns-clean:
 	rm ~/.zshrc ~/.vimrc ~/.vimshrc ~/.tmux.conf
 
 app-install:
-ifeq ($(shell uname -a | grep -o Ubuntu),Ubuntu)
-	echo "Ubuntu"
-	sudo apt update
-	sudo apt install -y vim-gtk tmux zsh git
-	sed -i 's/.*default-shell/#&/g' $(DOTPATH)/.tmux.conf
-	chsh -s $(shell which zsh)
-endif
-ifeq ($(shell uname),Darwin)
-	echo "Mac"
-else
-	echo "other"
-endif
+	bash app_install.sh
 
