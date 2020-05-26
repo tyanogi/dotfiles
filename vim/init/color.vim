@@ -1,5 +1,4 @@
 syntax enable
-colorscheme molokai
 
 " 全角スペースをハイライト表示
 function! ZenkakuSpace()
