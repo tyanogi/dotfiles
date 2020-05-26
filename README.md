@@ -1,8 +1,12 @@
-## 実行方法
-curl -L raw.github.com/tyanogi/dotfiles/master/install.sh | bash
-vim
+## Setup
+```
+$ bash -c "$(curl -L raw.github.com/tyanogi/dotfiles/master/install.sh)"
+
+# deinのinstall
+$ vim
 :call dein#install()
 :call dein#update()
+```
 
 ## vimrc(dein)
 ### 構造
