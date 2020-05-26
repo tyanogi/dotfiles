@@ -9,9 +9,10 @@ if [ $OS = 'ubuntu' ]; then
   sudo apt update
   sudo apt install -y tmux zsh git
   # install neovim
-  sudo apt install software-properties-common
+  sudo apt install -y software-properties-common
   sudo add-apt-repository ppa:neovim-ppa/stable
-  sudo apt install neovim
+  sudo apt update
+  sudo apt install -y neovim
 
   sed -i 's/.*default-shell/#&/g' $DOTPATH/.tmux.conf
   chsh -s $(which zsh)
