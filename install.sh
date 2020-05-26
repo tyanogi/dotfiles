@@ -3,8 +3,7 @@ GITHUB_URL="https://github.com/tyanogi/dotfiles.git"
 
 # git が使えるなら git
 if type git > /dev/null 2>&1; then
-    git clone --recursive -b auto_configuration "$GITHUB_URL" "$DOTPATH"
-    #git clone --recursive "$GITHUB_URL" "$DOTPATH"
+    git clone --recursive "$GITHUB_URL" "$DOTPATH"
 
 # 使えない場合は curl か wget を使用する
 elif type curl > /dev/null 2>&1 || type wget > /dev/null 2>&1; then
