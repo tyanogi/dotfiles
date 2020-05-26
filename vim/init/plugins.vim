@@ -52,4 +52,5 @@ let g:jedi#rename_command = '<Leader>R'
 
 "-----------------------------------------------------
 call dein#end()
+colorscheme molokai
 
