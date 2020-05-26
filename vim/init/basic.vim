@@ -32,10 +32,10 @@ set smartcase                    "大文字ではじめたら大文字小文字�
 
 "Other ----------------------------------------------
 set noswapfile                   " swapファイルを作成しない
-set clipboard=autoselect         " ビジュアルモードで選択したテキストが、クリップボードに入るようにする
+"set clipboard=autoselect         " ビジュアルモードで選択したテキストが、クリップボードに入るようにする
 set clipboard+=unnamed           " 無名レジスタに入るデータを、*レジスタにも入れる。
 " linuxの場合必要
-"set clipboard=unnamedplus
+set clipboard=unnamedplus
 set backspace=indent,eol,start
 set tags+=~/.tags                " ctagsの設定
 
