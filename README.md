@@ -1,24 +1,20 @@
-## Setup
-```
-$ bash -c "$(curl -L raw.github.com/tyanogi/dotfiles/master/install.sh)"
+# Prerequirements
+- git
+- curl
+- [neovim](https://github.com/neovim/neovim/blob/master/INSTALL.md)
+- zsh
+- [oh-my-zsh](https://ohmyz.sh/#install)
+- [fzf](https://github.com/junegunn/fzf?tab=readme-ov-file#installation)
 
-# deinのinstall
-$ vim
-:call dein#install()
-:call dein#update()
+# Setup
+## Install oh-my-zsh plugin
+```
+./oh-my-zsh-plugin-install.sh
 ```
 
-## vimrc(dein)
-### 構造
+## 
 ```
-vim  
-|  
-|--- init ------ base.vim  
-|             |- color.vim  
-|             |- mapping.vim  
-|             |- plugins.vim  
-|
-|--- plugins --- plugins-nerdtree-git-plugin.vim
-              |- plugins-open-browser.vim
-              |- plugins-vimshell.vim
+DOTPATH=~/dotfiles
+ln -sf $DOTPATH/.zshrc ~/.zshrc
+ln -sf $DOTPATH/.config/nvim ~/.config/nvim
 ```
