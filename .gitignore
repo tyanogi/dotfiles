@@ -44,5 +44,8 @@ tags
 
 .zsshrc_mac
 
-dev_env.zsh
+lazy-lock.json
+lazyvim.json
+.oh-my-zsh/custom/plugins/**
+local-env.zsh
 
