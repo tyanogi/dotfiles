@@ -11,10 +11,16 @@
 ```
 ./oh-my-zsh-plugin-install.sh
 ```
-
-## 
+## Create symboric link
 ```
-DOTPATH=~/dotfiles
-ln -sf $DOTPATH/.zshrc ~/.zshrc
-ln -sf $DOTPATH/.config/nvim ~/.config/nvim
+make link
+```
+
+# Use with Docker
+```
+docker build -t ubuntu-dotfiles .
+```
+
+```
+docker run -it --rm ubuntu-dotfiles
 ```
