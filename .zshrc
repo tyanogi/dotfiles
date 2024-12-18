@@ -38,6 +38,8 @@ setopt hist_ignore_all_dups
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # editor
 alias vim='nvim'
+# tmux
+alias t='tmux'
 
 source ~/dotfiles/.oh-my-zshrc
 source ~/dotfiles/local-env.zsh
