@@ -1,6 +1,7 @@
 # Prerequirements
 - git
 - curl
+- tmux
 - [neovim](https://github.com/neovim/neovim/blob/master/INSTALL.md)
 - zsh
 - [oh-my-zsh](https://ohmyz.sh/#install)

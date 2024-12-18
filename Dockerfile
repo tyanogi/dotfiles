@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     wget \
     zsh \
+    tmux \
     sudo \
     fzf \
     ca-certificates \
@@ -37,6 +38,9 @@ RUN git clone https://github.com/tyanogi/dotfiles.git ./dotfiles && \
     cd ~
 
 RUN nvim --headless "+Lazy! install" +qall
+
+RUN git clone https://github.com/tmux-plugins/tpm .tmux/plugins/tpm
+RUN .tmux/plugins/tpm/bin/install_plugins
 
 ENV HOME=/home/${USERNAME}
 
