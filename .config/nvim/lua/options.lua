@@ -1,5 +1,11 @@
 local opt = vim.opt
 
+-- encoding
+opt.encoding = "utf-8"
+opt.fileencoding = "utf-8"
+opt.fileencodings = "ucs-bom,utf-8,euc-jp,cp932"
+opt.fileformats = "unix,dos,mac"
+
 -- View
 opt.number = true
 opt.relativenumber = true
