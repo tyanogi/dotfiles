@@ -60,3 +60,4 @@ TIME=$(str_with_color green '[%*]')
 LINE1='${TIME} ${USER_NAME}${SEPARATOR1}${HOST_NAME}${vcs_info_msg_0_}($(kubectx_prompt_info)${SEPARATOR2}$(kubens_prompt_info))${SEPARATOR3}${CURRNET_DIRECTORY} '$'\n'
 LINE2="${SEPARATOR4}"
 PROMPT="${LINE1}${LINE2}"
+RPROMPT="${${KEYMAP/vicmd/$VIM_NORMAL}/(main|viins)/$VIM_INSERT}"
