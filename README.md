@@ -1,11 +1,16 @@
 # Prerequirements
+## Software
 - git
 - curl
 - tmux
-- [neovim](https://github.com/neovim/neovim/blob/master/INSTALL.md)
 - zsh
 - [oh-my-zsh](https://ohmyz.sh/#install)
+- [neovim](https://github.com/neovim/neovim/blob/master/INSTALL.md)
 - [fzf](https://github.com/junegunn/fzf?tab=readme-ov-file#installation)
+
+## Termianl fonts
+Choose your favorite font in [NerfFont](https://www.nerdfonts.com/font-downloads)
+- CaskaydiaCove: https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/CascadiaCode/Regular/CaskaydiaCoveNerdFont-Regular.ttf
 
 # Installation
 ## Local Computer
