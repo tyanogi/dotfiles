@@ -15,6 +15,16 @@ bindkey -a '^J' vi-forward-word
 function str_with_color() {
     echo "%{$fg[$1]%}$2%{$reset_color%}"
 }
+
+function update_prompt() {
+    ACTIVE_KUBE=""
+    KUBECTX_INFO=$(str_with_color cyan $(kubectx_prompt_info))
+    KUBENS_INFO=$(str_with_color cyan $(kubens_prompt_info))
+    if [[ -n "${KUBECTX_INFO}" && -n "${KUBENS_INFO}" ]]; then
+        ACTIVE_KUBE=${LEFT_PARENTHESIS}${KUBECTX_INFO}${SEPARATOR2}${KUBENS_INFO}${RIGHT_PARENTHESIS}
+    fi
+}
+
 # git
 # vcs_infoロード    
 autoload -Uz vcs_info    
@@ -26,16 +36,14 @@ zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
 zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
 zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
-# プロンプト表示直前にvcs_info呼び出し    
-precmd() { vcs_info }    
+precmd() {
+    vcs_info
+    update_prompt
+}    
 
 # kubectx mapping
 kubectx_mapping[kubernetes-admin@kubernetes]="raspi_k8s"
-kubectx_mapping[kind-kind]=$(str_with_color cyan 'kind')
-kubens_mapping[default]=$(str_with_color cyan 'default')
-# kubens mapping
-kubens_mapping[kube-public]=$(str_with_color cyan 'kube-public')
-kubens_mapping[kube-system]=$(str_with_color cyan 'kube-system')
+kubectx_mapping[kind-kind]="kind"
 
 # Vimのモードを表示
 function zle-line-init zle-keymap-select {
@@ -56,8 +64,10 @@ SEPARATOR3=$(str_with_color white ':')
 CURRNET_DIRECTORY=$(str_with_color green '%~')
 SEPARATOR4=$(str_with_color magenta '>> ')
 TIME=$(str_with_color green '[%*]')
+LEFT_PARENTHESIS=$(str_with_color magenta '(')
+RIGHT_PARENTHESIS=$(str_with_color magenta ')')
 
-LINE1='${TIME} ${USER_NAME}${SEPARATOR1}${HOST_NAME}${vcs_info_msg_0_}($(kubectx_prompt_info)${SEPARATOR2}$(kubens_prompt_info))${SEPARATOR3}${CURRNET_DIRECTORY} '$'\n'
+LINE1='${TIME} ${USER_NAME}${SEPARATOR1}${HOST_NAME}${vcs_info_msg_0_}${ACTIVE_KUBE}${SEPARATOR3}${CURRNET_DIRECTORY} '$'\n'
 LINE2="${SEPARATOR4}"
 PROMPT="${LINE1}${LINE2}"
 RPROMPT="${${KEYMAP/vicmd/$VIM_NORMAL}/(main|viins)/$VIM_INSERT}"
