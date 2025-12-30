@@ -57,11 +57,12 @@ export LC_ALL=en_US.UTF-8
 ```
 
 `mise` will manage the following tools:
-- Neovim
-- fzf
-- Sheldon
-- Oh My Posh
-- tmux
+- Neovim: Hyperextensible Vim-based text editor
+- fzf: General-purpose command-line fuzzy finder
+- Sheldon: Fast, configurable, shell plugin manager
+- Oh My Posh: Prompt theme engine for any shell
+- tmux: Terminal multiplexer
+- eza: A modern, maintained replacement for ls
 
 # Use with Docker
 [tyanogi/dotfiles](https://github.com/tyanogi/dotfiles/pkgs/container/dotfiles)
