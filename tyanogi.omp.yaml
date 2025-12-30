@@ -39,7 +39,8 @@ blocks:
     segments:
       - type: path
         style: plain
-        template: "<cyan>{{ .Path }}</> "
+        template: "\ue5ff <cyan>{{ .Path }}</> "
+        foreground: "#61AFEF"
 
   # --- 3行目: プロンプト記号 ---
   - type: prompt
