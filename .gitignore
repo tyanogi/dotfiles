@@ -46,6 +46,5 @@ tags
 
 lazy-lock.json
 lazyvim.json
-.oh-my-zsh/custom/plugins/**
 local-env.zsh
-
+.gemini_logs

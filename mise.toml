@@ -1,0 +1,25 @@
+[tools]
+neovim = "latest"
+fzf = "latest"
+sheldon = "latest"
+oh-my-posh = "latest"
+tmux = "latest"
+
+[tasks.setup]
+description = "Install system dependencies"
+run = """
+if [[ "$MISE_OS" == "macos" ]]; then
+  if ! command -v brew &> /dev/null; then
+    echo "Homebrew is required on macOS"
+    exit 1
+  fi
+  # 必要に応じて brew install ... を追加
+elif [[ "$MISE_OS" == "linux" ]]; then
+  sudo apt-get update
+  sudo apt-get install -y build-essential curl git
+fi
+"""
+
+[tasks.link]
+description = "Create symlinks using Makefile"
+run = "make link"

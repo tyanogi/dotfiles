@@ -1,5 +1,12 @@
 DOTPATH=~/dotfiles
 
+install:
+	@if ! command -v mise &> /dev/null; then \
+		curl https://mise.jdx.dev/install.sh | sh; \
+	fi
+	~/bin/mise install
+	~/bin/mise run setup
+
 init: create_local-env link_zshrc link_nvim
 create_local-env:
 	echo 'export PATH=$$PATH:/opt/nvim' > $(DOTPATH)/local-env.zsh

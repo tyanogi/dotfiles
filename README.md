@@ -2,12 +2,8 @@
 ## Software
 - git
 - curl
-- tmux
 - zsh
-- [sheldon](https://github.com/rossmacarthur/sheldon)
-- [oh-my-posh](https://ohmyposh.dev/)
-- [neovim](https://github.com/neovim/neovim/blob/master/INSTALL.md)
-- [fzf](https://github.com/junegunn/fzf?tab=readme-ov-file#installation)
+- [mise](https://mise.jdx.dev/)
 
 ## Termianl fonts
 Choose your favorite font in [NerfFont](https://www.nerdfonts.com/font-downloads)
@@ -18,11 +14,21 @@ Choose your favorite font in [NerfFont](https://www.nerdfonts.com/font-downloads
 Clone this repository just under your `$HOME`
 ```
 git clone https://github.com/tyanogi/dotfiles.git
+cd dotfiles
 ```
-Create symboric link
+
+Install tools and setup environment
 ```
+make install
 make link
 ```
+
+`mise` will manage the following tools:
+- Neovim
+- fzf
+- Sheldon
+- Oh My Posh
+- tmux
 
 # Use with Docker
 [tyanogi/dotfiles](https://github.com/tyanogi/dotfiles/pkgs/container/dotfiles)
