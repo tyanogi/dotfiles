@@ -4,6 +4,7 @@ fzf = "latest"
 "ubi:rossmacarthur/sheldon" = "latest"
 "ubi:JanDeDobbeleer/oh-my-posh" = "latest"
 tmux = "latest"
+eza = "latest"
 
 [tasks.setup]
 description = "Install system dependencies"

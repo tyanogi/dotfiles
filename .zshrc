@@ -28,7 +28,8 @@ zstyle ':completion:*:descriptions' format '%F{yellow}Completing %B%d%b%f'$DEFAU
 ## マッチ種別を別々に表示
 zstyle ':completion:*' group-name ''
 ## LS_COLORSを設定しておく
-export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+# export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+export LS_COLORS='di=1;36:fi=1;37:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 ## ファイル補完候補に色を付ける
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
@@ -122,5 +123,21 @@ function zle-line-init zle-keymap-select {
 # ウィジェットとして登録
 zle -N zle-line-init
 zle -N zle-keymap-select
+
+# ---------------------------------------------------
+# ▼ eza Configuration (ls replacement) ▼
+# ---------------------------------------------------
+if command -v eza >/dev/null 2>&1; then
+  # エイリアス設定 (ls や ll で eza を呼び出す)
+  alias ls='eza --icons --git'
+  alias ll='eza -la --icons --git --header --time-style=long-iso'
+
+  # EZA_COLORS 設定
+  # di=1;36 : ディレクトリ (太字シアン)
+  # ln=1;35 : シンボリックリンク (太字マゼンタ)
+  # fi=37   : 通常ファイル (白)
+  # xx=1;37 : 句読点・矢印など (太字白) ← ★これで矢印が見えるようになります
+  export EZA_COLORS="di=1;36:ln=1;35:fi=37:xx=1;37:ex=31:so=32:pi=33:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43"
+fi
 
 source ~/dotfiles/local-env.zsh
