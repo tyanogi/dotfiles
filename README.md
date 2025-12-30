@@ -4,7 +4,8 @@
 - curl
 - tmux
 - zsh
-- [oh-my-zsh](https://ohmyz.sh/#install)
+- [sheldon](https://github.com/rossmacarthur/sheldon)
+- [oh-my-posh](https://ohmyposh.dev/)
 - [neovim](https://github.com/neovim/neovim/blob/master/INSTALL.md)
 - [fzf](https://github.com/junegunn/fzf?tab=readme-ov-file#installation)
 
@@ -17,10 +18,6 @@ Choose your favorite font in [NerfFont](https://www.nerdfonts.com/font-downloads
 Clone this repository just under your `$HOME`
 ```
 git clone https://github.com/tyanogi/dotfiles.git
-```
-Install oh-my-zsh plugin
-```
-./oh-my-zsh-plugin-install.sh
 ```
 Create symboric link
 ```

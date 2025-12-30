@@ -1,0 +1,51 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+version: 2
+final_space: true
+
+blocks:
+  # --- 1行目: 情報表示エリア ---
+  - type: prompt
+    alignment: left
+    # 最初のブロックなので newline: true はあってもなくても良いですが、統一感のため記述
+    newline: true
+    segments:
+      # 1. 時間
+      - type: time
+        style: plain
+        options:
+          time_format: "15:04:05"
+        template: "<green>[{{ .CurrentDate | date .Format }}]</> "
+
+      # 2. User @ Host
+      - type: text
+        style: plain
+        template: "<blue>{{ .UserName }}</><magenta>@</><blue>{{ .HostName }}</>"
+
+      # 3. Git情報
+      - type: git
+        style: plain
+        template: " <green>{{ .HEAD }}</>{{ if .Staging.Changed }}<yellow>!</>{{ end }}{{ if .Working.Changed }}<red>+</>{{ end }}"
+
+      # 4. Kubernetes
+      - type: kubectl
+        style: plain
+        template: ' <magenta>(</><cyan>{{ if eq .Context "kubernetes-admin@kubernetes" }}raspi_k8s{{ else if eq .Context "kind-kind" }}kind{{ else }}{{ .Context }}{{ end }}</><magenta>-></><cyan>{{ .Namespace }}</><magenta>)</>'
+
+  # --- 2行目 (左): カレントディレクトリ ---
+  - type: prompt
+    alignment: left
+    newline: true  # ここで改行して2行目を開始
+    segments:
+      - type: path
+        style: plain
+        template: "<cyan>{{ .Path }}</> "
+
+  # --- 3行目: プロンプト記号 ---
+  - type: prompt
+    alignment: left
+    newline: true  # ここで改行して3行目へ
+    segments:
+      - type: text
+        style: plain
+        template: "<magenta>>></>"

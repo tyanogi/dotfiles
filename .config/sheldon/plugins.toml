@@ -1,0 +1,17 @@
+# ~/.config/sheldon/plugins.toml
+
+# シェル設定 (遅延読み込みの設定など)
+shell = "zsh"
+
+# 1. zsh-autosuggestions (入力補完)
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+
+# 2. zsh-syntax-highlighting (コマンドの強調表示)
+# ※ 必ず最後に読み込まれるように最後に記述するのが推奨です
+[plugins.zsh-syntax-highlighting]
+github = "zsh-users/zsh-syntax-highlighting"
+
+# 3. zsh-completions (追加の補完定義) ※必要な場合のみ
+[plugins.zsh-completions]
+github = "zsh-users/zsh-completions"
