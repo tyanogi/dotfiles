@@ -24,9 +24,37 @@ vim.g.maplocalleader = "\\"
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-    -- import your plugins
+    -- LazyVimの基本プラグインを最初に読み込み
+    {
+      "LazyVim/LazyVim",
+      import = "lazyvim.plugins",
+      opts = {
+        colorscheme = "tokyonight",
+      },
+    },
+    -- LazyVimのエクストラプラグインを次に読み込み（必要に応じて）
+    -- { import = "lazyvim.plugins.extras.lang.typescript" },
+    -- { import = "lazyvim.plugins.extras.lang.json" },
+    -- { import = "lazyvim.plugins.extras.ui.mini-animate" },
+    
+    -- 独自のプラグインを最後に読み込み
     { import = "plugins" },
   },
-  -- automatically check for plugin updates
-  checker = { enabled = true },
+  defaults = {
+    lazy = false,
+    version = false, -- always use the latest git commit
+  },
+  install = { colorscheme = { "tokyonight", "habamax" } },
+  checker = { enabled = true }, -- automatically check for plugin updates
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "gzip",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
+  },
 })
