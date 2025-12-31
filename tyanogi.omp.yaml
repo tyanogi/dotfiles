@@ -39,6 +39,8 @@ blocks:
     segments:
       - type: path
         style: plain
+        options:
+          style: full
         template: "\ue5ff <cyan>{{ .Path }}</> "
         foreground: "#61AFEF"
 
