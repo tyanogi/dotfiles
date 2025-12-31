@@ -20,10 +20,17 @@ cd dotfiles
 Assume `mise` is already installed.
 
 ```bash
-# Install tools and setup environment
-make install
-make link
+# Setup environment and create symbolic links
+make init
 ```
+
+`make init` will:
+- Create `local-env.zsh` for local environment settings.
+- Create symbolic links for `.zshrc`, `.tmux.conf`, and other config files.
+
+### Local Environment Settings (`local-env.zsh`)
+`local-env.zsh` is used for machine-specific configurations (e.g., machine-specific PATH settings or environment variables).
+This file is automatically loaded at the very beginning of `.zshrc`. It is ignored by git so you can define local settings without affecting the repository.
 
 ## Ubuntu
 For a clean Ubuntu environment (e.g., Docker container).
@@ -42,8 +49,8 @@ mise trust
 # 4. Install tools via mise
 mise install --yes
 
-# 5. Create symbolic links
-make link
+# 5. Setup environment and create symbolic links
+make init
 
 # 6. Install tmux plugin manager and plugins
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
