@@ -6,6 +6,34 @@
 source ~/dotfiles/local-env.zsh
 
 # ---------------------------------------------------
+# ▼ Vim Mode Settings (★ここへ移動しました) ▼
+# ---------------------------------------------------
+# 1. Vimモードを有効化
+bindkey -v
+
+# 2. キーバインド設定
+# インサートモードで Ctrl+j を押すとノーマルモードへ
+bindkey -M viins '^J' vi-cmd-mode
+# ノーマルモードで Ctrl+j を押すと単語移動
+bindkey -a '^J' vi-forward-word
+
+# 3. モード切替ロジック
+function zle-line-init zle-keymap-select {
+    # メインまたはインサートモードの場合
+    if [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} == '' ]]; then
+        export POSH_VI_MODE="INSERT"
+    else
+        # それ以外（vicmdなど）はNORMAL扱い
+        export POSH_VI_MODE="NORMAL"
+    fi
+    zle reset-prompt
+}
+
+# ウィジェットとして登録
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+# ---------------------------------------------------
 # ▼ Mise (Tool Manager) ▼
 # ---------------------------------------------------
 if command -v mise &> /dev/null; then
@@ -97,34 +125,6 @@ fi
 # ---------------------------------------------------
 # プラグイン読み込みは必ず最後に行う
 eval "$(sheldon source)"
-
-# ---------------------------------------------------
-# ▼ Vim Mode Settings (★ここへ移動しました) ▼
-# ---------------------------------------------------
-# 1. Vimモードを有効化
-bindkey -v
-
-# 2. キーバインド設定
-# インサートモードで Ctrl+j を押すとノーマルモードへ
-bindkey -M viins '^J' vi-cmd-mode
-# ノーマルモードで Ctrl+j を押すと単語移動
-bindkey -a '^J' vi-forward-word
-
-# 3. モード切替ロジック
-function zle-line-init zle-keymap-select {
-    # メインまたはインサートモードの場合
-    if [[ ${KEYMAP} == main ]] || [[ ${KEYMAP} == viins ]] || [[ ${KEYMAP} == '' ]]; then
-        export POSH_VI_MODE="INSERT"
-    else
-        # それ以外（vicmdなど）はNORMAL扱い
-        export POSH_VI_MODE="NORMAL"
-    fi
-    zle reset-prompt
-}
-
-# ウィジェットとして登録
-zle -N zle-line-init
-zle -N zle-keymap-select
 
 # ---------------------------------------------------
 # ▼ eza Configuration (ls replacement) ▼
