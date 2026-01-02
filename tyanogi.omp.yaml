@@ -7,8 +7,6 @@ blocks:
   # --- 1行目: 情報表示エリア ---
   - type: prompt
     alignment: left
-    # 最初のブロックなので newline: true はあってもなくても良いですが、統一感のため記述
-    newline: true
     segments:
       # 1. 時間
       - type: time

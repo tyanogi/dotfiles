@@ -15,3 +15,5 @@ link_sheldon:
 	ln -sf $(DOTPATH)/.config/sheldon ~/.config/sheldon
 link_mise:
 	ln -sf $(DOTPATH)/.config/mise ~/.config/mise
+link_ghostty:
+	ln -sf $(DOTPATH)/.config/ghostty ~/.config/ghostty

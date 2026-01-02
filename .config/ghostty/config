@@ -1,0 +1,29 @@
+# Font settings
+font-family = "CaskaydiaCove Nerd Font Mono"
+font-size = 13
+font-feature = -dlig
+adjust-cell-height = 0
+adjust-cell-width = -1
+
+# Cursor settings
+cursor-style = block
+
+# Theme & Appearance
+theme = Builtin Solarized Dark
+background-opacity = 0.85
+
+# macOS specific settings
+macos-titlebar-style = hidden
+macos-icon = custom-style
+macos-icon-ghost-color = 010101
+macos-icon-screen-color = FF88FF
+macos-icon-frame = plastic
+
+# Quick Terminal settings
+quick-terminal-position = "top"
+quick-terminal-screen = "main"
+quick-terminal-animation-duration = 0.3
+
+# Keybindings
+keybind = "global:cmd+shift+t=toggle_quick_terminal"
+
