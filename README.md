@@ -5,8 +5,8 @@
 - zsh
 - [mise](https://mise.jdx.dev/) (Required for macOS)
 
-## Termianl fonts
-Choose your favorite font in [NerfFont](https://www.nerdfonts.com/font-downloads)
+## Terminal fonts
+Choose your favorite font in [NerdFont](https://www.nerdfonts.com/font-downloads)
 - CaskaydiaCove: https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/CascadiaCode/Regular/CaskaydiaCoveNerdFont-Regular.ttf
 
 # Installation
@@ -71,8 +71,37 @@ export LC_ALL=en_US.UTF-8
 - tmux: Terminal multiplexer
 - eza: A modern, maintained replacement for ls
 
-# Use with Docker
-[tyanogi/dotfiles](https://github.com/tyanogi/dotfiles/pkgs/container/dotfiles)
-```
+# Use with Docker / Dev Containers
+This repository provides custom Docker images on GHCR.
+
+## Standard Dotfiles Image
+A clean Ubuntu environment with these dotfiles pre-installed.
+- [ghcr.io/tyanogi/dotfiles](https://github.com/tyanogi/dotfiles/pkgs/container/dotfiles)
+
+```bash
 docker run -it --rm ghcr.io/tyanogi/dotfiles:latest
+```
+
+## Containerlab Dev Environment
+A specialized image based on `containerlab/devcontainer-dind`, optimized for network topology testing with VS Code Dev Containers.
+
+- [ghcr.io/tyanogi/containerlab-dev](https://github.com/tyanogi/dotfiles/pkgs/container/containerlab-dev)
+- Base Image: `ghcr.io/srl-labs/containerlab/devcontainer-dind:0.72.0`
+- User: `vscode`
+- Pre-configured alias: `clab` (with `CLAB_LABDIR_BASE=/var/tmp/clab`)
+
+### Use in devcontainer.json
+```json
+{
+    "image": "ghcr.io/tyanogi/containerlab-dev:latest",
+    "remoteUser": "vscode",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "zsh",
+                "terminal.integrated.fontFamily": "MesloLGS NF, FiraCode Nerd Font, monospace"
+            }
+        }
+    }
+}
 ```
