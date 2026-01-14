@@ -1,29 +1,30 @@
-# Font settings
+# Appearance
+theme = Builtin Solarized Dark
+background-opacity = 0.85
+window-padding-x = 5
+window-padding-y = 0
+window-padding-balance = true
+title = " "
+
+# Font
 font-family = "CaskaydiaCove Nerd Font Mono"
 font-size = 13
 font-feature = -dlig
 adjust-cell-height = 0
 adjust-cell-width = -1
 
-# Cursor settings
+# Cursor
 cursor-style = block
 
-# Theme & Appearance
-theme = Builtin Solarized Dark
-background-opacity = 0.85
+# macOS
+macos-titlebar-style = tabs
+macos-icon = xray
 
-# macOS specific settings
-macos-titlebar-style = hidden
-macos-icon = custom-style
-macos-icon-ghost-color = 010101
-macos-icon-screen-color = FF88FF
-macos-icon-frame = plastic
-
-# Quick Terminal settings
+# Quick Terminal
 quick-terminal-position = "top"
 quick-terminal-screen = "main"
 quick-terminal-animation-duration = 0.3
 
 # Keybindings
-keybind = "global:cmd+shift+t=toggle_quick_terminal"
-
+keybind = "global:opt+t=toggle_quick_terminal"
+keybind = "opt+z=toggle_split_zoom"
