@@ -3,7 +3,8 @@
 # - * Author: tyanogi
 # ------------------------------------------------------------------------------------------------------------
 
-source ~/dotfiles/local-env.zsh
+# Machine-local settings. Not tracked by git, so it may not exist yet.
+[ -f ~/dotfiles/local-env.zsh ] && source ~/dotfiles/local-env.zsh
 
 # ---------------------------------------------------
 # ▼ Vim Mode Settings ▼
@@ -39,8 +40,10 @@ fi
 # ---------------------------------------------------
 # ▼ Completion Settings ▼
 # ---------------------------------------------------
+# compinit itself is called at the very end of this file, after `sheldon source`
+# has added plugin directories (zsh-completions) to $fpath. Calling it here would
+# run against an incomplete $fpath and silently drop those completions.
 autoload -U compinit
-compinit
 
 zstyle ':completion:*:default' menu select=2
 zstyle ':completion:*' verbose yes
@@ -122,5 +125,11 @@ fi
 # ---------------------------------------------------
 # ▼ Plugin Management (Sheldon) ▼
 # ---------------------------------------------------
-# Should be called at the end
+# Should be called at the end (zsh-syntax-highlighting must be loaded last)
 eval "$(sheldon source)"
+
+# ---------------------------------------------------
+# ▼ Completion Init ▼
+# ---------------------------------------------------
+# Must run after `sheldon source`, which is what puts zsh-completions on $fpath.
+compinit
