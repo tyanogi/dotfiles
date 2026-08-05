@@ -18,7 +18,10 @@ blocks:
       # 2. User @ Host
       - type: text
         style: plain
-        template: "<blue>{{ .UserName }}</><magenta>@</><blue>{{ .HostName }}</>"
+        # Show only the first label of the host name. Cloud VMs often carry an
+        # FQDN as their system host name (e.g. GCE internal DNS), which would
+        # otherwise take up most of the line.
+        template: '<blue>{{ .UserName }}</><magenta>@</><blue>{{ first (splitList "." .HostName) }}</>'
 
       # 3. Git情報
       - type: git
