@@ -35,32 +35,50 @@ This file is automatically loaded at the very beginning of `.zshrc`. It is ignor
 ## Ubuntu
 For a clean Ubuntu environment (e.g., Docker container).
 
+Run these from inside the cloned `~/dotfiles` directory. They assume a normal user
+with `sudo`; in a bare container that already runs as root, drop every `sudo` prefix.
+
 ```bash
 # 1. Install required libraries
-apt-get update && apt-get install -y curl git sudo build-essential libevent-dev libncurses-dev bison pkg-config zsh
+sudo apt-get update && sudo apt-get install -y \
+  curl git sudo build-essential libevent-dev libncurses-dev bison pkg-config zsh locales
 
 # 2. Install mise
 curl https://mise.jdx.dev/install.sh | sh
 
 # 3. Activate mise for the current shell session
-eval "$(/root/.local/bin/mise activate bash)"
+eval "$("$HOME/.local/bin/mise" activate bash)"
 mise trust
 
-# 4. Install tools via mise
+# 4. Install tools via mise (reads .config/mise/mise.toml from this directory)
 mise install --yes
 
 # 5. Setup environment and create symbolic links
 make init
 
-# 6. Install tmux plugin manager and plugins
+# 6. Install Neovim plugins.
+#    `+Lazy! install` returns while mason is still installing in the background,
+#    so mason-managed tools need a second, synchronous pass.
+mise exec neovim -- nvim --headless "+Lazy! install" +qall
+mise exec neovim -- nvim --headless "+Lazy! load mason.nvim" \
+  "+MasonInstall tree-sitter-cli shfmt stylua" +qa
+
+# 7. Install tmux plugin manager and plugins
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ~/.tmux/plugins/tpm/bin/install_plugins
 
-# 7. Setup UTF-8 locale
-apt-get update && apt-get install -y locales
-locale-gen en_US.UTF-8
+# 8. Persist the machine-local environment.
+#    zsh does not read ~/.profile, so $HOME/.local/bin (mise) has to be added here,
+#    and a bare `export LANG` would not survive the next login either.
+sudo locale-gen en_US.UTF-8
+cat >> local-env.zsh <<'EOF'
+export PATH="$HOME/.local/bin:$PATH"
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+EOF
+
+# 9. Make zsh the login shell
+sudo chsh -s "$(command -v zsh)" "$(whoami)"
 ```
 
 `mise` will manage the following tools:
