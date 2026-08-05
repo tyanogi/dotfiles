@@ -40,8 +40,7 @@ ENV PATH="/home/${USERNAME}/.local/bin:$PATH"
 # Setup dotfiles early to get mise.toml
 RUN git clone https://github.com/tyanogi/dotfiles.git ./dotfiles && \
     cd ./dotfiles && \
-    make link && \
-    touch local-env.zsh
+    make init
 
 # Install tools via mise (neovim, fzf, sheldon, oh-my-posh, tmux, eza, node)
 # Note: node is needed for gemini-cli
@@ -65,7 +64,11 @@ RUN echo "y" | mise exec node@20 -- gemini extensions install https://github.com
 # Based on mise.toml, mise handles neovim.
 
 # Install Neovim plugins
-RUN mise exec neovim -- nvim --headless "+Lazy! install" +qall
+# `+Lazy! install` returns while mason's installs are still running in the
+# background, so mason-managed tools need a second, synchronous pass.
+RUN mise exec neovim -- nvim --headless "+Lazy! install" +qall && \
+    mise exec neovim -- nvim --headless "+Lazy! load mason.nvim" \
+      "+MasonInstall tree-sitter-cli shfmt stylua" +qa
 
 # Install tmux plugins
 RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
