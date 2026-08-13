@@ -80,12 +80,16 @@ detach = ["prefix+q", "prefix+d"]
 #
 
 [theme]
-# ghostty の iTerm2 Solarized Dark に合わせる
-# 他: catppuccin, tokyo-night, dracula, nord, gruvbox, one-dark, kanagawa, rose-pine, vesper, terminal
-name = "solarized"
+# ghostty は iTerm2 Solarized Dark (青緑系の背景) なので、同系色のテーマだと
+# 透過したサイドバー/タブの境界が沈む。kanagawa はくすんだ暖色系で色相が離れるため輪郭が立つ
+# 他 (dark): catppuccin, tokyo-night, dracula, nord, gruvbox, one-dark, solarized, rose-pine, vesper
+# 他 (light): catppuccin-latte, tokyo-night-day, gruvbox-light, one-light, solarized-light,
+#             kanagawa-lotus, rose-pine-dawn
+# terminal を指定するとホスト端末の ANSI パレットに追従する
+name = "kanagawa"
 
 [theme.custom]
-# ghostty の background-opacity = 0.85 を殺さないよう背景を塗らない
+# ghostty の background-opacity を殺さないよう背景を塗らない
 panel_bg = "reset"
 
 [ui]
