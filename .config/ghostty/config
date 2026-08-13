@@ -1,6 +1,6 @@
 # Appearance
 theme = Builtin Solarized Dark
-background-opacity = 0.85
+background-opacity = 0.92
 window-padding-x = 5
 window-padding-y = 0
 window-padding-balance = true
