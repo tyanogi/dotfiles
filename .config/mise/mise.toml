@@ -4,6 +4,7 @@ fzf = "latest"
 sheldon = "latest"
 oh-my-posh = "latest"
 tmux = "latest"
+"github:herdrdev/herdr" = "latest"
 eza = "latest"
 
 [tasks.setup]

@@ -1,0 +1,120 @@
+# ------------------------------------------------------------------------------------------------------------
+# - * File: herdr/config.toml
+# - * Author: tyanogi
+# - * Note: 検証 `herdr config check` / 反映 `herdr server reload-config` / 既定値 `herdr --default-config`
+# ------------------------------------------------------------------------------------------------------------
+
+# 初回起動時の通知セットアップは下で明示設定するのでスキップ
+onboarding = false
+
+#################################################
+#
+#  BASIC Setting
+#
+
+[terminal]
+# 空文字なら $SHELL (= zsh) を使う
+default_shell = ""
+shell_mode = "auto"
+# 新規ペイン/タブは元のペインの cwd を継承 (tmux の -c "#{pane_current_path}" 相当)
+new_cwd = "follow"
+
+[advanced]
+# tmux の history-limit 相当。herdr はペインあたりのバイト数で保持する (既定 10MB)
+scrollback_limit_bytes = 100000000
+
+#################################################
+#
+#  KEY BINDING Setting
+#
+
+[keys]
+# tmux と同じく C-a を prefix にする
+prefix = "ctrl+a"
+
+# prefix+= で左右分割 / prefix+- で上下分割 (tmux の bind = / bind - 相当)
+# herdr 既定の prefix+v も左右分割として残す
+split_vertical = ["prefix+=", "prefix+v"]
+split_horizontal = "prefix+minus"
+
+# ペイン移動 (tmux-pain-control 相当。herdr 既定と同じだが明示しておく)
+focus_pane_left = "prefix+h"
+focus_pane_down = "prefix+j"
+focus_pane_up = "prefix+k"
+focus_pane_right = "prefix+l"
+
+# prefix+w の navigate mode (workspace 選択) を vim 風に j/k で上下移動する
+# 既定は上下矢印が workspace 移動、hjkl が navigate mode 中のペイン移動。
+# j/k を workspace 移動に譲るため、ペインの上下移動は空文字で無効化 (h/l は左右移動のまま)
+navigate_workspace_up = "k"
+navigate_workspace_down = "j"
+navigate_pane_left = "h"
+navigate_pane_right = "l"
+navigate_pane_up = ""
+navigate_pane_down = ""
+
+# tmux の window ≒ herdr の tab。prefix なしの C-S-h/l でも行き来できるようにする
+# (tmux の C-S-h/l は swap-window だったが、herdr にタブ並び替えの action は無い)
+previous_tab = ["prefix+p", "ctrl+shift+h"]
+next_tab = ["prefix+n", "ctrl+shift+l"]
+
+# tmux の prefix+d (detach) も残す (herdr 既定は prefix+q)
+detach = ["prefix+q", "prefix+d"]
+
+# 参考: 以下は herdr 既定のまま tmux と一致している
+#   new_tab = "prefix+c" / switch_tab = "prefix+1..9" / close_pane = "prefix+x"
+#   zoom = "prefix+z" / copy mode = "prefix+[" / help = "prefix+?"
+# herdr 固有: toggle_sidebar = "prefix+b" / resize_mode = "prefix+r" / workspace_picker = "prefix+w"
+
+# 常駐させたいコマンドは popup で開ける (tmux の display-popup 相当)
+# [[keys.command]]
+# key = "prefix+alt+g"
+# type = "popup"
+# command = "lazygit"
+# width = "80%"
+# height = "80%"
+
+#################################################
+#
+#  UI / THEME Setting
+#
+
+[theme]
+# ghostty の iTerm2 Solarized Dark に合わせる
+# 他: catppuccin, tokyo-night, dracula, nord, gruvbox, one-dark, kanagawa, rose-pine, vesper, terminal
+name = "solarized"
+
+[theme.custom]
+# ghostty の background-opacity = 0.85 を殺さないよう背景を塗らない
+panel_bg = "reset"
+
+[ui]
+# tmux の set -g mouse on 相当
+mouse_capture = true
+copy_on_select = true
+accent = "cyan"
+# tmux の new-window と同じく、名前を聞かずに即タブを作る
+prompt_new_tab_name = false
+tab_bar_position = "top"
+
+[ui.toast]
+# アプリ内トースト。OS 通知にしたいなら "system" / 不要なら "off"
+delivery = "herdr"
+delay_seconds = 1
+
+# 通知音が邪魔なら false
+# [ui.sound]
+# enabled = false
+
+#################################################
+#
+#  MISC
+#
+
+[experimental]
+# 日本語入力 (IME) 中でも prefix (C-a) が効くよう、prefix モード中だけ ASCII 入力へ切り替える
+switch_ascii_input_source_in_prefix = true
+# TUI 系エージェントで変換候補ウィンドウが追従しない場合に有効化する
+# (vim のノーマルモードなどで余分なカーソルが見える副作用あり)
+# reveal_hidden_cursor_for_cjk_ime = true
+# cjk_ime_agents = ["claude"]

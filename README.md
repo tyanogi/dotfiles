@@ -87,7 +87,26 @@ sudo chsh -s "$(command -v zsh)" "$(whoami)"
 - Sheldon: Fast, configurable, shell plugin manager
 - Oh My Posh: Prompt theme engine for any shell
 - tmux: Terminal multiplexer
+- herdr: Agent-aware terminal multiplexer (tmux replacement)
 - eza: A modern, maintained replacement for ls
+
+## herdr
+Config: `.config/herdr/config.toml` (linked to `~/.config/herdr/config.toml`)
+
+Keybindings are aligned with `.tmux.conf` (prefix `C-a`, `prefix+=` / `prefix+-` to split,
+`prefix+hjkl` to move between panes, `prefix+d` to detach).
+
+```bash
+herdr                      # launch or attach to the persistent session
+herdr config check         # validate config.toml
+herdr server reload-config # apply config changes to the running server
+herdr server stop          # stop the server and all panes
+```
+
+Notable differences from tmux:
+- tmux `window` is a `tab` in herdr, and `session` is roughly a `workspace` (`prefix+w`).
+- No pane synchronization (`bind S`) and no tab reordering (`swap-window`).
+- Copy mode is `prefix+[`; it is not rebindable via config.
 
 # Use with Docker / Dev Containers
 This repository provides custom Docker images on GHCR.

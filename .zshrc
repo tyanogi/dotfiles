@@ -107,6 +107,38 @@ if command -v eza >/dev/null 2>&1; then
 fi
 
 # ---------------------------------------------------
+# ▼ herdr ▼
+# ---------------------------------------------------
+# herdr は tmux (ls / a など) のような略記サブコマンドを受け付けないので shell 側で展開する
+#   h            -> herdr                      (起動 / 再アタッチ)
+#   h s l        -> herdr session list
+#   h s a <name> -> herdr session attach <name>
+#   h w l        -> herdr workspace list
+#   h t l        -> herdr tab list
+#   h p l        -> herdr pane list
+#   h c c        -> herdr config check
+#   h v r        -> herdr server reload-config
+# 上記以外は herdr にそのまま渡すので `h status` や `h --version` も使える
+h() {
+  local -A _herdr_short=(
+    "s l" "session list"
+    "s a" "session attach"
+    "w l" "workspace list"
+    "t l" "tab list"
+    "p l" "pane list"
+    "c c" "config check"
+    "v r" "server reload-config"
+  )
+  local expanded=${_herdr_short[${1:-} ${2:-}]}
+  if [[ $# -ge 2 && -n $expanded ]]; then
+    shift 2
+    command herdr ${=expanded} "$@"
+  else
+    command herdr "$@"
+  fi
+}
+
+# ---------------------------------------------------
 # ▼ Plugin Settings (Zsh-autosuggestions) ▼
 # ---------------------------------------------------
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=cyan"
@@ -133,3 +165,10 @@ eval "$(sheldon source)"
 # ---------------------------------------------------
 # Must run after `sheldon source`, which is what puts zsh-completions on $fpath.
 compinit
+
+# herdr の補完は compdef を使うので compinit の後に読み込む。
+# compdef h=herdr で短縮関数 h にも herdr と同じ補完を効かせる。
+if command -v herdr &> /dev/null; then
+  eval "$(herdr completion zsh)"
+  compdef h=herdr
+fi
