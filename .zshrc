@@ -38,6 +38,13 @@ if command -v mise &> /dev/null; then
 fi
 
 # ---------------------------------------------------
+# ▼ Go ▼
+# ---------------------------------------------------
+if [ -d /usr/local/go/bin ]; then
+  export PATH="$PATH:/usr/local/go/bin:$HOME/go/bin"
+fi
+
+# ---------------------------------------------------
 # ▼ Completion Settings ▼
 # ---------------------------------------------------
 # compinit itself is called at the very end of this file, after `sheldon source`
