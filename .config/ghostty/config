@@ -1,5 +1,5 @@
 # Appearance
-theme = Builtin Solarized Dark
+theme = iTerm2 Solarized Dark
 background-opacity = 0.92
 window-padding-x = 5
 window-padding-y = 0
@@ -26,7 +26,7 @@ quick-terminal-screen = "main"
 quick-terminal-animation-duration = 0.3
 
 # Keybindings
-keybind = "global:opt+t=toggle_quick_terminal"
+keybind = "global:ctrl+g=toggle_quick_terminal"
 keybind = "opt+z=toggle_split_zoom"
 
 # Resize splits with Cmd + Shift + hjkl
@@ -34,3 +34,7 @@ keybind = cmd+shift+h=resize_split:left,20
 keybind = cmd+shift+j=resize_split:down,20
 keybind = cmd+shift+k=resize_split:up,20
 keybind = cmd+shift+l=resize_split:right,20
+
+# Terminal
+term = xterm-256color
+
