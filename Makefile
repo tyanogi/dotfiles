@@ -1,11 +1,11 @@
 DOTPATH=~/dotfiles
 
-init: create_local-env link_zshrc link_tmux link_herdr link_nvim link_sheldon link_mise
+init: create_local-env link_zshrc link_tmux link_herdr link_nvim link_sheldon link_mise link_ghostty
 # local-env.zsh holds machine-specific settings and is gitignored, so it must
 # never be clobbered on re-run. Only create it when it is missing.
 create_local-env:
 	test -f $(DOTPATH)/local-env.zsh || touch $(DOTPATH)/local-env.zsh
-link: link_zshrc link_tmux link_herdr link_nvim link_sheldon link_mise
+link: link_zshrc link_tmux link_herdr link_nvim link_sheldon link_mise link_ghostty
 # -n is required for the directory links: without it a re-run dereferences the
 # existing symlink and creates the new one *inside* the target directory.
 link_zshrc:
